@@ -4,13 +4,19 @@ function ENT:Draw()
     self:DrawModel()
 end
 
+surface.CreateFont("Font", {
+    font = "Roboto",
+    size = 20,
+    weight = 1000
+})
+
 net.Receive("Armoire", function(len,ply)
         local ent = net.ReadEntity()
 
         local Armoire = vgui.Create("DFrame")
         Armoire:SetSize(600, 325)
         Armoire:Center()
-        Armoire:SetTitle(title_menu)
+        Armoire:SetTitle("")
         Armoire:SetDraggable(false)
         Armoire:ShowCloseButton(false)
         Armoire:MakePopup()
@@ -18,6 +24,7 @@ net.Receive("Armoire", function(len,ply)
         Armoire.Paint = function(self, w, h)
             draw.RoundedBox(0, 0, -300, w, h, Color(255, 183, 48))
             draw.RoundedBox(0, 0, 25, w, h, Color(210, 212, 214))
+            draw.SimpleText(title_menu, "Font", 300, 3, color_white, TEXT_ALIGN_CENTER, TEXT_ALIGN_TOP)
         end
 
         local CloseButton = vgui.Create( "DImageButton", Armoire )
@@ -31,17 +38,17 @@ net.Receive("Armoire", function(len,ply)
         local Scroll = vgui.Create( "DScrollPanel", Armoire )
         Scroll:Dock(FILL)
 
-        local sbar = Scroll:GetVBar()
-        function sbar:Paint(w, h)
+        local ScrollBar = Scroll:GetVBar()
+        function ScrollBar:Paint(w, h)
             draw.RoundedBox(6, 0, 0, w, h, Color(255, 166, 0))
         end
-        function sbar.btnUp:Paint(w, h)
+        function ScrollBar.btnUp:Paint(w, h)
             draw.RoundedBoxEx(5, 0, 0, w, h, Color(255, 183, 48), true, true, false, false)
         end
-        function sbar.btnDown:Paint(w, h)
+        function ScrollBar.btnDown:Paint(w, h)
             draw.RoundedBoxEx(5, 0, 0, w, h, Color(255, 183, 48), false, false, true, true)
         end
-        function sbar.btnGrip:Paint(w, h)
+        function ScrollBar.btnGrip:Paint(w, h)
             draw.RoundedBoxEx(5, 0, 0, w, h, Color(255, 183, 48), false, false, false, false)
         end
 

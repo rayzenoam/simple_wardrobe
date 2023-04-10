@@ -1,16 +1,20 @@
 ENT.Type = "anim"
 ENT.Base = "base_gmodentity"
 ENT.Author = "Noam"
-ENT.PrintName = "Armoire"
+ENT.PrintName = "Wardrobe"
 ENT.Category = "Simple Wardrobe"
 ENT.Spawnable = true
 ENT.AdminOnly = true
 
 ENT.RenderGroup = RENDERGROUP_BOTH
 
-title_menu = "Armoire"
-choose_text = "Prendre"
-success_change = "Vous venez de prendre un modèle avec succès."
+// List of messages :
+
+title_menu = "Wardrobe"
+choose_text = "Take"
+success_change = "You have just successfully taken a model."
+
+// List of models in the wardrobe :
 
 wardrobe = {
     "models/player/Group01/male_02.mdl",
